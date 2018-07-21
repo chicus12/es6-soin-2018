@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Let & const MVP</title>
+</head>
+<body>
+<script>
+  // Replace de IIFE
+  const color = 'white'
+  {
+    const color = 'brown'
+    console.log(color)
+  }
+
+  console.log(color)
+
+
+
+  // for weird functionality
+  for (let i = 0; i < 10; i++) {
+    console.log('Loop ' + i)
+    setTimeout(() => {
+      console.log('Timeout', i)
+    }, 1000);
+  }
+</script>
+</body>
+</html>
