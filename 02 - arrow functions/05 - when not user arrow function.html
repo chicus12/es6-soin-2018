@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>When NOT use Arrow Function</title>
+  <style>
+    button { font-size: 60px; }
+    .on { background: #ffc600; }
+  </style>
+</head>
+<body>
+  <button id="pushy">Presiona el botón</button>
+
+<script>
+  // Cuando usted realmente necesita el this
+  const button = document.querySelector('#pushy');
+  button.addEventListener('click', () => {
+    this.classList.toggle('on');
+  });
+
+  // Cuando tiene un metodo en un objeto, y necesita acceder a una propiedad del objeto
+  const person = {
+    points: 23,
+    score: () => {
+      this.points++;
+    }
+  }
+
+  // Cuando utiliza un prototype method, y necesita acceder a variables o funciones de la clase
+  class Car {
+    constructor(make, colour) {
+      this.make = make;
+      this.colour = colour;
+    }
+  }
+
+  const beetle = new Car('BMW', 'azul');
+  const suba = new Car('Subaru', 'blanco');
+
+  Car.prototype.summarize = () => {
+    return 'Este carro es un ' +  this.make + ' de color ' + this.colour;
+  };
+
+  // Cuando necesita utilizar el objeto de argumentos
+  const orderChildren = () => {
+    const children = Array.from(arguments);
+    // return children.map((child, i) => {
+    //   return child + ' como hijo ' + (i + 1);
+    // })
+    console.log(arguments);
+  }
+</script>
+</body>
+</html>
